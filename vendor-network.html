@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshConnect - My Vendor Network</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Very light blue-gray background */
+            color: #333; /* Dark text for light background */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Light gray */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60a5fa; /* Blue-400 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; /* Blue-500 */
+        }
+        .btn-primary {
+            background-image: linear-gradient(to right, #3b82f6, #2563eb); /* Blue gradient */
+            color: white;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4); /* Blue shadow */
+        }
+        .btn-secondary {
+            background-color: #e2e8f0; /* Light gray */
+            color: #333;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .btn-secondary:hover {
+            background-color: #cbd5e1; /* Medium gray */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(203, 213, 225, 0.4);
+        }
+        .vendor-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .vendor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-4 px-6 md:px-10 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center flex-wrap gap-4">
+            <!-- Logo and Tagline -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/3b82f6/ffffff?text=FC" alt="FreshConnect Logo" class="w-10 h-10 rounded-full">
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold text-gray-800">FreshConnect</span>
+                    <span class="text-xs text-gray-500 hidden sm:block">Trusted Raw Materials for Street Food Vendors</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center space-x-4">
+                <button onclick="window.location.href='dashboard.html'" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium">
+                    <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                </button>
+                <button id="logoutBtn" class="px-4 py-2 rounded-lg btn-secondary font-medium">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section - Vendor Network -->
+    <main class="py-16 px-6 md:px-10 bg-gray-50 min-h-screen">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-8 text-gray-800 text-center">
+                My <span class="text-blue-600">Vendor Network</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-700 text-center">
+                View and manage vendors you supply or can potentially supply to.
+            </p>
+
+            <!-- Search and Filter for Vendors -->
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center">
+                <div class="relative flex-grow w-full sm:w-auto">
+                    <input type="text" placeholder="Search vendors by name, location, or specialty..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-800">
+                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <div class="flex w-full sm:w-auto space-x-4">
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full sm:w-auto bg-white text-gray-800">
+                        <option>Highest Rated</option>
+                        <option>Most Orders</option>
+                        <option>Newest</option>
+                    </select>
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7.586V4z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <p class="text-gray-600 mt-4">Found <span id="vendorCount">3</span> vendors in your network</p>
+
+            <!-- Vendor Listings -->
+            <div id="vendorListings" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <!-- Vendor Card 1 -->
+                <div class="vendor-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Ravi's Street Food <span class="inline-flex items-center text-blue-600 text-sm ml-2"> <i class="fas fa-check-circle mr-1"></i> Verified</span></h3>
+                            <p class="text-gray-500 text-sm">Karol Bagh, Delhi | Food Specialty: North Indian Chaat</p>
+                            <div class="flex items-center text-yellow-600 text-sm mt-1">
+                                <span class="font-bold">4.9</span>
+                                <span class="ml-1">⭐</span>
+                                <span class="text-gray-500 ml-1">(320 reviews)</span>
+                            </div>
+                        </div>
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Vendor</span>
+                    </div>
+                    <p class="font-semibold text-gray-700 mb-2">Recent Order Needs:</p>
+                    <ul class="text-gray-600 text-sm space-y-1 mb-4">
+                        <li>Tomatoes, Onions, Potatoes</li>
+                        <li>Spices (Garam Masala)</li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 text-sm">Last Order: 2 days ago</span>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 rounded-lg btn-primary font-semibold" onclick="alert('Viewing Ravi\'s details!')">View Details</button>
+                            <button class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-colors">
+                                <i class="fas fa-phone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendor Card 2 -->
+                <div class="vendor-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Priya's Chai Stall <span class="inline-flex items-center text-blue-600 text-sm ml-2"> <i class="fas fa-check-circle mr-1"></i> Verified</span></h3>
+                            <p class="text-gray-500 text-sm">Whitefield, Bangalore | Food Specialty: Tea & Snacks</p>
+                            <div class="flex items-center text-yellow-600 text-sm mt-1">
+                                <span class="font-bold">4.7</span>
+                                <span class="ml-1">⭐</span>
+                                <span class="text-gray-500 ml-1">(180 reviews)</span>
+                            </div>
+                        </div>
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Vendor</span>
+                    </div>
+                    <p class="font-semibold text-gray-700 mb-2">Recent Order Needs:</p>
+                    <ul class="text-gray-600 text-sm space-y-1 mb-4">
+                        <li>Fresh Milk, Sugar, Tea Leaves</li>
+                        <li>Biscuits, Snacks</li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 text-sm">Last Order: 1 day ago</span>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 rounded-lg btn-primary font-semibold" onclick="alert('Viewing Priya\'s details!')">View Details</button>
+                            <button class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-colors">
+                                <i class="fas fa-phone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendor Card 3 -->
+                <div class="vendor-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Sharma Snacks <span class="inline-flex items-center text-blue-600 text-sm ml-2"> <i class="fas fa-check-circle mr-1"></i> Verified</span></h3>
+                            <p class="text-gray-500 text-sm">Andheri West, Mumbai | Food Specialty: Vada Pav, Samosa</p>
+                            <div class="flex items-center text-yellow-600 text-sm mt-1">
+                                <span class="font-bold">4.6</span>
+                                <span class="ml-1">⭐</span>
+                                <span class="text-gray-500 ml-1">(250 reviews)</span>
+                            </div>
+                        </div>
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Vendor</span>
+                    </div>
+                    <p class="font-semibold text-gray-700 mb-2">Recent Order Needs:</p>
+                    <ul class="text-gray-600 text-sm space-y-1 mb-4">
+                        <li>Potatoes, Chickpea Flour</li>
+                        <li>Cooking Oil, Spices</li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 text-sm">Last Order: 3 days ago</span>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 rounded-lg btn-primary font-semibold" onclick="alert('Viewing Sharma\'s details!')">View Details</button>
+                            <button class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-colors">
+                                <i class="fas fa-phone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="window.location.href='dashboard.html'" class="mt-12 px-6 py-3 rounded-full font-semibold btn-secondary">
+                Back to Dashboard
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-10 px-6 md:px-10">
+        <div class="container mx-auto text-center text-gray-500 text-sm">
+            &copy; 2025 FreshConnect. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Retrieve user data from session storage
+        const userData = JSON.parse(sessionStorage.getItem('freshConnectUser'));
+        const logoutBtn = document.getElementById('logoutBtn');
+        const vendorCountSpan = document.getElementById('vendorCount');
+        const vendorCards = document.querySelectorAll('.vendor-card'); // For filtering simulation
+
+        // Basic logout function
+        function logout() {
+            sessionStorage.removeItem('freshConnectUser'); // Clear session
+            window.location.href = 'index.html'; // Redirect to main page
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user is logged in and is a supplier (only suppliers should view this page)
+            if (!userData || !userData.isLoggedIn || userData.role !== 'supplier') {
+                alert('Access Denied. Please log in as a supplier to view your vendor network.');
+                window.location.href = 'index.html'; // Redirect if not authorized
+                return;
+            }
+
+            logoutBtn.addEventListener('click', logout);
+
+            // Update vendor count display (initial count from HTML)
+            vendorCountSpan.textContent = vendorCards.length;
+
+            // Placeholder for search/filter functionality (similar to suppliers.html)
+            // You can add event listeners here for the search input and select dropdowns
+            // to filter the `vendor-card` elements dynamically.
+        });
+    </script>
+</body>
+</html>

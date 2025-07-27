@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshConnect - My Analytics</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Very light blue-gray background */
+            color: #333; /* Dark text for light background */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Light gray */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60a5fa; /* Blue-400 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; /* Blue-500 */
+        }
+        .btn-primary {
+            background-image: linear-gradient(to right, #3b82f6, #2563eb); /* Blue gradient */
+            color: white;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4); /* Blue shadow */
+        }
+        .btn-secondary {
+            background-color: #e2e8f0; /* Light gray */
+            color: #333;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .btn-secondary:hover {
+            background-color: #cbd5e1; /* Medium gray */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(203, 213, 225, 0.4);
+        }
+        .analytics-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .analytics-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-4 px-6 md:px-10 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center flex-wrap gap-4">
+            <!-- Logo and Tagline -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/3b82f6/ffffff?text=FC" alt="FreshConnect Logo" class="w-10 h-10 rounded-full">
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold text-gray-800">FreshConnect</span>
+                    <span class="text-xs text-gray-500 hidden sm:block">Trusted Raw Materials for Street Food Vendors</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center space-x-4">
+                <button onclick="window.location.href='dashboard.html'" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium">
+                    <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                </button>
+                <button id="logoutBtn" class="px-4 py-2 rounded-lg btn-secondary font-medium">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section - My Analytics -->
+    <main class="py-16 px-6 md:px-10 bg-gray-50 min-h-screen">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-8 text-gray-800 text-center">
+                My <span class="text-blue-600">Analytics</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-700 text-center">
+                Insights into your sales, product performance, and customer trends.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="analytics-card bg-blue-50">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Total Sales (Last 30 Days)</h3>
+                    <p class="text-3xl font-bold text-blue-600">₹1,25,000</p>
+                    <p class="text-sm text-gray-600 mt-2"><i class="fas fa-arrow-up text-green-500 mr-1"></i> 15% from previous month</p>
+                </div>
+                <div class="analytics-card bg-green-50">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Orders Processed</h3>
+                    <p class="text-3xl font-bold text-green-600">85</p>
+                    <p class="text-sm text-gray-600 mt-2"><i class="fas fa-check-circle text-green-500 mr-1"></i> 98% completion rate</p>
+                </div>
+                <div class="analytics-card bg-yellow-50">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Top Selling Product</h3>
+                    <p class="text-3xl font-bold text-yellow-600">Basmati Rice</p>
+                    <p class="text-sm text-gray-600 mt-2">250 kg sold this month</p>
+                </div>
+                <div class="analytics-card bg-purple-50 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Customer Ratings</h3>
+                    <p class="text-3xl font-bold text-purple-600">4.7 <span class="text-yellow-500 text-2xl">⭐</span></p>
+                    <p class="text-sm text-gray-600 mt-2">Based on 120 reviews</p>
+                </div>
+                <div class="analytics-card bg-red-50 md:col-span-2">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sales Trend (Placeholder Chart)</h3>
+                    <div class="bg-gray-100 h-48 rounded-lg flex items-center justify-center text-gray-400">
+                        <p>Graph/Chart will be displayed here</p>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Weekly sales volume over the last 3 months.</p>
+                </div>
+            </div>
+
+            <button onclick="window.location.href='dashboard.html'" class="mt-12 px-6 py-3 rounded-full font-semibold btn-secondary">
+                Back to Dashboard
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-10 px-6 md:px-10">
+        <div class="container mx-auto text-center text-gray-500 text-sm">
+            &copy; 2025 FreshConnect. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Retrieve user data from session storage
+        const userData = JSON.parse(sessionStorage.getItem('freshConnectUser'));
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Basic logout function
+        function logout() {
+            sessionStorage.removeItem('freshConnectUser'); // Clear session
+            window.location.href = 'index.html'; // Redirect to main page
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user is logged in and is a supplier
+            if (!userData || !userData.isLoggedIn || userData.role !== 'supplier') {
+                alert('Access Denied. Please log in as a supplier to view analytics.');
+                window.location.href = 'index.html'; // Redirect if not authorized
+                return;
+            }
+
+            logoutBtn.addEventListener('click', logout);
+        });
+    </script>
+</body>
+</html>
